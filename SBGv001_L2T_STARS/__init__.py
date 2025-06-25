@@ -1,4 +1,4 @@
-from .L2T_STARS import *
+from .SBGv001_L2T_STARS import *
 
 from os.path import join, abspath, dirname
 

@@ -3,8 +3,8 @@ requires = ["setuptools>=60", "setuptools-scm>=8.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "SBGv001_L2T_STARS"
-version = "1.0.1"
+name = "SBGv001-L2T-STARS"
+version = "1.1.0"
 description = "ECOSTRESS Collection 3 JPL STARS Data Fusion Product Generating Executable (PGE)"
 readme = "README.md"
 authors = [
@@ -16,6 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "colored-logging",
+    "SBG-TIR-exit-codes",
     "SBGv001-granules",
     "SBGv001-CMR>=1.0.4",
     "pandas",
