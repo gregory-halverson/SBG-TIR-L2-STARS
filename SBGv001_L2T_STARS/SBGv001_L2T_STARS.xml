@@ -11,8 +11,8 @@
         </vector>
     </group>
     <group name="JobIdentification">
-        <scalar name="ProductionLocation">ECOSTRESS Science Computing Facility</scalar>
-        <scalar name="TaskId">urn:ecostress:L2TSTARSTask</scalar>
+        <scalar name="ProductionLocation">SBG Science Computing Facility</scalar>
+        <scalar name="TaskId">urn:ecostress:L2GL2TLSTETask</scalar>
         <scalar name="ProcessingNode">processing_node</scalar>
         <scalar name="ProductionDateTime">production_datetime</scalar>
         <scalar name="JobId">job_ID</scalar>
@@ -22,7 +22,7 @@
         <scalar name="L2T_LSTE">L2T_LSTE_filename</scalar>
         <scalar name="L2T_STARS_PRIOR">prior_L2T_STARS_filename</scalar>
     </group>
-    <group name="StaticAncillaryFileGroup">
+    <group name="StaticAuxiliaryFileGroup">
         <scalar name="L2T_STARS_MODEL">model_directory</scalar>
         <scalar name="L2T_STARS_INDICES">indices_directory</scalar>
         <scalar name="L2T_STARS_SOURCES">sources_directory</scalar>

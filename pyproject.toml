@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "SBGv001-L2T-STARS"
 version = "1.1.0"
-description = "ECOSTRESS Collection 3 JPL STARS Data Fusion Product Generating Executable (PGE)"
+description = "SBG Collection 3 JPL STARS Data Fusion Product Generating Executable (PGE)"
 readme = "README.md"
 authors = [
     { name = "Gregory H. Halverson", email = "gregory.h.halverson@jpl.nasa.gov" },

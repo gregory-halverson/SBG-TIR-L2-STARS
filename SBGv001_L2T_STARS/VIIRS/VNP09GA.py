@@ -22,9 +22,10 @@ import rasters
 from rasters import Raster, RasterGrid, RasterGeometry, Point, Polygon
 from modland import generate_modland_grid
 
+from SBGv001_exit_codes import *
+
 from ..daterange import get_date
 from ..LPDAAC.LPDAACDataPool import RETRIES
-from ..exit_codes import DownloadFailed
 from .VIIRSDataPool import VIIRSGranule
 from .VIIRS_CMR_LOGIN import CMRServerUnreachable, VIIRS_CMR_login
 
@@ -1018,7 +1019,8 @@ def latest_datetime(date_in: Union[date, str]) -> datetime:
     return parser.parse(f"{date_string}T23:59:59Z")
 
 
-VIIRS_FILENAME_REGEX = re.compile("^VNP09GA\.[^.]+\.([^.]+)\.002\.\d+\.h5$")
+VIIRS_FILENAME_REGEX = re.compile(r"^VNP09GA\.[^.]+\.([^.]+)\.002\.\d+\.h5$")
+
 def modland_tile_from_filename(filename: str) -> str:
     match = VIIRS_FILENAME_REGEX.match(filename)
     if match is None:

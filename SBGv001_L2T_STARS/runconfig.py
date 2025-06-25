@@ -3,7 +3,7 @@ from os.path import exists
 
 import untangle
 
-from .exit_codes import UnableToOpenRunConfig, UnableToParseRunConfig, ECOSTRESSExitCodeException
+from SBGv001_exit_codes import *
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ def read_runconfig(filename: str) -> dict:
     try:
         tree = untangle.parse(filename)
         config = parse_group(tree.input)
-    except ECOSTRESSExitCodeException as e:
+    except SBGExitCodeException as e:
         raise e
     except Exception as e:
         logger.exception(e)
@@ -65,6 +65,6 @@ def read_runconfig(filename: str) -> dict:
     return config
 
 
-class ECOSTRESSRunConfig:
+class SBGRunConfig:
     def read_runconfig(self, filename: str) -> dict:
         return read_runconfig(filename)

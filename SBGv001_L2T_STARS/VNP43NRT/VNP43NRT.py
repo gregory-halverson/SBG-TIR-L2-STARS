@@ -17,7 +17,7 @@ import colored_logging as cl
 
 import rasters
 from rasters import Raster, RasterGeometry, Point, Polygon
-from geos5fp import GEOS5FP, FailedGEOS5FPDownload
+from GEOS5FP import GEOS5FP, FailedGEOS5FPDownload
 from modland import find_modland_tiles, parsehv, generate_modland_grid
 
 from ..BRDF import bidirectional_reflectance
@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 def install_VNP43NRT_jl(
     package_location: str = "https://github.com/STARS-Data-Fusion/VNP43NRT.jl",
-    environment_name: str = "@SBGv001-L2T-STARS"):
+    environment_name: str = "@ECOv002-L2T-STARS"):
     """
     Installs the VNP43NRT.jl package from GitHub into a shared environment.
 
@@ -45,7 +45,7 @@ def install_VNP43NRT_jl(
         github_url: The URL of the GitHub repository containing VNP43NRT.jl.
             Defaults to "https://github.com/STARS-Data-Fusion/VNP43NRT.jl".
         environment_name: The name of the shared Julia environment to install the
-            package into. Defaults to "@SBGv001-L2T-STARS".
+            package into. Defaults to "@ECOv002-L2T-STARS".
 
     Returns:
         A CompletedProcess object containing information about the execution of the Julia command.
@@ -113,7 +113,7 @@ def process_julia_BRDF(
 
     instantiate_VNP43NRT_jl(julia_source_directory)
 
-    command = f'julia --project={julia_source_directory} "{julia_script_filename}" "{band}" "{h}" "{v}" "{tile_width_cells}" "{start_date:%Y-%m-%d}" "{end_date:%Y-%m-%d}" "{reflectance_directory}" "{solar_zenith_directory}" "{sensor_zenith_directory}" "{relative_azimuth_directory}" "{SZA_filename}" "{output_directory}"'
+    command = f'julia "{julia_script_filename}" "{band}" "{h}" "{v}" "{tile_width_cells}" "{start_date:%Y-%m-%d}" "{end_date:%Y-%m-%d}" "{reflectance_directory}" "{solar_zenith_directory}" "{sensor_zenith_directory}" "{relative_azimuth_directory}" "{SZA_filename}" "{output_directory}"'
     logger.info(command)
     subprocess.run(command, shell=True)
 
@@ -247,7 +247,7 @@ class VNP43NRTGranule:
         return True
 
 
-class AncillaryDownloadFailed(ConnectionError):
+class AuxiliaryDownloadFailed(ConnectionError):
     pass
 
 
@@ -295,7 +295,7 @@ class VNP43NRT(VIIRSDownloaderAlbedo, VIIRSDownloaderNDVI):
             GEOS5FP_connection = GEOS5FP(
                 working_directory=working_directory,
                 download_directory=GEOS5FP_download,
-                products_directory=GEOS5FP_products
+                # products_directory=GEOS5FP_products
             )
 
         self.VNP09GA_directory = VNP09GA_directory
@@ -587,7 +587,7 @@ class VNP43NRT(VIIRSDownloaderAlbedo, VIIRSDownloaderNDVI):
         try:
             return self.GEOS5FP.AOT(time_UTC=time_UTC, geometry=geometry, resampling=resampling)
         except FailedGEOS5FPDownload as e:
-            raise AncillaryDownloadFailed("unable to retrieve AOT from GEOS5-FP for VNP43NRT")
+            raise AuxiliaryDownloadFailed("unable to retrieve AOT from GEOS5-FP for VNP43NRT")
 
     def VNP43NRT(
             self,
