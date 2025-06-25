@@ -50,20 +50,24 @@ dependencies = [
     "xmltodict"
 ]
 
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 dev = [
+    "build",
     "pytest>=6.0",
     "pytest-cov",
+    "jupyter",
+    "pytest",
+    "twine"
 ]
 
 [tool.setuptools.package-data]
 SBGv001_L2T_STARS = ["*.*"]
 
 [project.urls]
-"Homepage" = "https://github.com/ECOSTRESS-Collection-3/SBGv001-L2T-STARS"
+"Homepage" = "https://github.com/sbg-tir/SBG-TIR-L2T-STARS"
 
 [tool.setuptools.packages.find]
-include = ["SBGv001_L2T_JET"]
+include = ["SBGv001_L2T_STARS"]
 exclude = []
