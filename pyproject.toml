@@ -16,7 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "colored-logging",
-    "SBG-TIR-exit-codes",
+    "SBGv001-exit-codes",
     "SBGv001-granules",
     "SBGv001-CMR>=1.0.4",
     "pandas",
